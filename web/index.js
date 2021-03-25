@@ -28,7 +28,7 @@ const app = express();
 async function main() {
 
     const dbHost = process.env.DBHOST || "mongodb://localhost:27017";
-    const client = await mongodb.MongoClient.connect(dbHost);
+    const client = await mongodb.MongoClient.connect(dbHost, { useNewUrlParser: true });
     const db = client.db("mydb");
 
     app.get("/", (req, res) => {
